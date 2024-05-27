@@ -1,0 +1,13 @@
+{
+  "name": "spreadsheet-bdl",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "This is an attempt to put a behavioural definition language around an Excel spredsheet to aid in bulk processing tasks",
+  "repository": "github:matthew-chirgwin/spreadsheet-bdl",
+  "main": "src/index.js",
+  "author": "matthew-chirgwin",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "exceljs": "4.4.0"
+  }
+}

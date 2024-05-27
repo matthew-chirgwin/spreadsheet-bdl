@@ -1,0 +1,37 @@
+# Setup - describe the structure of starting data
+Given spreadsheet sheet "Starting data"
+Given column headings are on row "4"
+Given "Source" is in column "C"
+Given "Description" is in column "E"
+Given "Invoice cost (£)" is in column "G"
+
+# Define an output sheet (or not)
+Create a duplicate sheet "output sheet"
+
+# Create a new column if you wanted
+Create a new column heading "Calculated product type" in column "H"
+Create a new column heading "Stock storage cost" in column "I"
+
+# Mapping/translation phase - for sake of example, map supplier to a 'defined' type of product....
+
+If the "Source" column for a row contains any of the following words "Red Ryman", set the "Calculated product type" to "Paper"
+If the "Source" column for a row contains any of the following words "Mr Pencil", set the "Calculated product type" to "Hardware"
+If the "Source" column for a row contains any of the following words "Nile", set the "Calculated product type" to "Other"
+If the "Source" column for a row contains any of the following words "Phantom Ops", set the "Calculated product type" to "Platics bottles"
+
+# Mapping/translation phase - ... but having done that, if there were a description, use that to overwrite/set a more specific category
+
+If the "Description" column for a row contains any of the following words "Clothing, Hats", set the "Calculated product type" to "Clothing"
+If the "Description" column for a row contains any of the following words "Apples", set the "Calculated product type" to "Fruit juice"
+If the "Description" column for a row contains any of the following words "Firmware, Software, Code", set the "Calculated product type" to "Software"
+If the "Description" column for a row contains any of the following words "Packing, Boxes, Cardboard", set the "Calculated product type" to "Cardboard"
+
+# With all mapping done, make some calculations! 
+
+If the "Calculated product type" column for a row contains any of the following words "Cardboard, Paper", multiply the "Invoice cost (£)" by "1.1" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Clothing", multiply the "Invoice cost (£)" by "1.5" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Fruit juice", multiply the "Invoice cost (£)" by "1.7" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Hardware", multiply the "Invoice cost (£)" by "1.9" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Software", multiply the "Invoice cost (£)" by "1.1" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Platics bottles", multiply the "Invoice cost (£)" by "0.9" and set the result in the "Stock storage cost" column
+If the "Calculated product type" column for a row contains any of the following words "Other", multiply the "Invoice cost (£)" by "3" and set the result in the "Stock storage cost" column
